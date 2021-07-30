@@ -27,6 +27,10 @@ public class BookingServiceImpl implements BookingService {
     @Transactional
     public BookingEntity createBooking(BookingEntity bookingEntity, String idempotencyKey) {
 
+        if (idempotencyKey == null) {
+            throw new ValidationException("Invalid request. Missing idempotencyKey");
+        }
+
         Optional<IdempotencyEntity> key = idempotencyRepository.findById(idempotencyKey);
 
         if (key.isPresent()) {
