@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 public interface BookingResource {
     /**
      * Create {@link Booking} resource
@@ -18,4 +20,6 @@ public interface BookingResource {
     // ----------------------------------------------------------
     // TODO - add a new operation for Get All the bookings resource.
     // ----------------------------------------------------------
+
+    ResponseEntity<List<Booking>> getBookings();
 }
