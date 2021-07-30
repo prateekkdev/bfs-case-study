@@ -1,8 +1,7 @@
-package com.paypal.bfs.test.bookingserv.api;
+package com.paypal.bfs.test.bookingserv.api.booking;
 
 import com.paypal.bfs.test.bookingserv.api.model.Booking;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 

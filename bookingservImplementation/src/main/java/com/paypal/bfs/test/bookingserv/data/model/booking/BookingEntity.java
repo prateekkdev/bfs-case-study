@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.Date;
 
 @Entity
 @Data
@@ -18,14 +17,14 @@ import java.util.Date;
 public class BookingEntity {
 
     @Id @GeneratedValue
-    private int id;
+    private int bookingId;
 
     private String firstName;
     private String lastName;
 
-    private Date dob;
-    private Date checking;
-    private Date checkout;
+    private String dob;
+    private String checking;
+    private String checkout;
 
     private double totalPrice;
     private double deposit;

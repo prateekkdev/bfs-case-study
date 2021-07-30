@@ -21,8 +21,7 @@
     },
     "dob": {
       "description": "YYYY-MM-DD",
-      "type": "string",
-      "format": "date-time"
+      "type": "string"
     },
     "checkin": {
       "description": "YYYY-MM-DD HH:MM:SS",
@@ -72,6 +71,8 @@
   },
   "required": [
     "first_name",
-    "last_name"
+    "last_name",
+    "checkin",
+    "checkout"
   ]
 }
