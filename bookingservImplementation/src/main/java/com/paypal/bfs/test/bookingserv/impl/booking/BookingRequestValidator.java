@@ -1,10 +1,12 @@
 package com.paypal.bfs.test.bookingserv.impl.booking;
 
 import com.paypal.bfs.test.bookingserv.api.model.Booking;
-import com.paypal.bfs.test.bookingserv.impl.ValidationException;
 import com.paypal.bfs.test.bookingserv.impl.RequestValidator;
+import com.paypal.bfs.test.bookingserv.impl.ValidationException;
 import com.paypal.bfs.test.bookingserv.utils.GenericDateFormatter;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
 
 @Component
 public class BookingRequestValidator implements RequestValidator<Booking> {
@@ -14,7 +16,7 @@ public class BookingRequestValidator implements RequestValidator<Booking> {
             throw new ValidationException("Firstname should not be empty");
         }
 
-        if(booking.getFirstName().length() > 255) {
+        if (booking.getFirstName().length() > 255) {
             throw new ValidationException("Firstname is too large");
         }
 
@@ -30,7 +32,7 @@ public class BookingRequestValidator implements RequestValidator<Booking> {
             throw new ValidationException("Checkin should not be empty");
         }
 
-        if(!GenericDateFormatter.isCorrectDateTimeFormat(booking.getCheckin())) {
+        if (!GenericDateFormatter.isCorrectDateTimeFormat(booking.getCheckin())) {
             throw new ValidationException("Checkin date format is not correct");
         }
 
@@ -45,9 +47,14 @@ public class BookingRequestValidator implements RequestValidator<Booking> {
         if (booking.getDob() != null && !booking.getDob().isEmpty() && !GenericDateFormatter.isCorrectDateFormat(booking.getDob())) {
             throw new ValidationException("Date of birth is not in correct format");
         }
-    }
 
-    private void validateDateFormat() {
+        // If checkin is later than checkout
+        Date checkin = GenericDateFormatter.stringToDate(booking.getCheckin());
+        Date checkout = GenericDateFormatter.stringToDate(booking.getCheckout());
+
+        if (checkin.after(checkout)) {
+            throw new ValidationException("Invalid checkin. Checkin time cannot be after checkout.");
+        }
 
     }
 }

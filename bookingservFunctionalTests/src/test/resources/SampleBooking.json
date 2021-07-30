@@ -1,0 +1,17 @@
+{
+  "first_name": "Prateek",
+  "last_name": "Kesarwani",
+  "dob": "1989-09-17",
+  "checkin": "2021-07-30 12:00:00",
+  "checkout": "2021-07-31 12:00:00",
+  "totalPrice": 8000.00,
+  "deposit": 1000.00,
+  "address": {
+    "line1": "F1322, Brigade Lakefront",
+    "line2": "Whitefield",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "country": "India",
+    "zip_code": "560034"
+  }
+}
