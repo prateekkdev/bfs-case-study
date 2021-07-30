@@ -2,10 +2,12 @@ package com.paypal.bfs.test.bookingserv.service.booking;
 
 import com.paypal.bfs.test.bookingserv.data.model.booking.BookingEntity;
 import com.paypal.bfs.test.bookingserv.data.repository.booking.BookingRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class BookingServiceImpl implements BookingService {
 
     private BookingRepository bookingRepository;

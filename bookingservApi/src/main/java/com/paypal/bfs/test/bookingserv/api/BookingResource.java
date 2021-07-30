@@ -2,8 +2,7 @@ package com.paypal.bfs.test.bookingserv.api;
 
 import com.paypal.bfs.test.bookingserv.api.model.Booking;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,12 +13,12 @@ public interface BookingResource {
      * @param booking the booking object
      * @return the created booking
      */
-    @RequestMapping("/v1/bfs/booking")
-    ResponseEntity<Booking> create(@RequestBody Booking booking);
+    ResponseEntity<Booking> create(Booking booking);
 
-    // ----------------------------------------------------------
-    // TODO - add a new operation for Get All the bookings resource.
-    // ----------------------------------------------------------
-
+    /**
+     * Get all bookings
+     *
+     * @return all bookings
+     */
     ResponseEntity<List<Booking>> getBookings();
 }
