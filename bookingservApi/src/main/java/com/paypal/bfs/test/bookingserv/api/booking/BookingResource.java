@@ -4,6 +4,7 @@ import com.paypal.bfs.test.bookingserv.api.model.Booking;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BookingResource {
     /**
@@ -12,7 +13,7 @@ public interface BookingResource {
      * @param booking the booking object
      * @return the created booking
      */
-    ResponseEntity<Booking> create(Booking booking);
+    ResponseEntity<Booking> create(Booking booking, Map<String, String> headers);
 
     /**
      * Get all bookings

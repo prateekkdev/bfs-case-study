@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BookingService {
 
-    BookingEntity createBooking(BookingEntity bookingEntity);
+    BookingEntity createBooking(BookingEntity bookingEntity, String idempotencyKey);
 
     List<BookingEntity> getAllBookings();
 }

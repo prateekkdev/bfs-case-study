@@ -6,13 +6,10 @@ import com.paypal.bfs.test.bookingserv.data.model.booking.BookingEntity;
 import com.paypal.bfs.test.bookingserv.impl.mapper.BookingModelMapper;
 import com.paypal.bfs.test.bookingserv.service.booking.BookingService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -28,11 +25,11 @@ public class BookingResourceImpl implements BookingResource {
 
     @Override
     @RequestMapping(value = "/v1/bfs/booking", method = RequestMethod.POST)
-    public ResponseEntity<Booking> create(@Valid @RequestBody Booking booking) {
+    public ResponseEntity<Booking> create(@RequestBody Booking booking, @RequestHeader Map<String, String> headers) {
 
         bookingValidator.validate(booking);
 
-        BookingEntity bookingEntity = bookingService.createBooking(BookingModelMapper.bookingDtoToEntity(booking));
+        BookingEntity bookingEntity = bookingService.createBooking(BookingModelMapper.bookingDtoToEntity(booking), headers.get("idempotency-key"));
         return ResponseEntity.ok().body(BookingModelMapper.bookingEntityToDto(bookingEntity));
     }
 
